@@ -7,7 +7,7 @@ class Ingredient(models.Model):
 
 class Meal(models.Model):
     name = models.CharField(max_length=100)
-    description = models.CharField(max_length=1000)
+    description = models.CharField(max_length=1000, blank=True)
     ingredients = models.ManyToManyField(Ingredient)
 
 class MealHistory(models.Model):
