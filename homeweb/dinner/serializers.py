@@ -4,10 +4,10 @@ from dinner.models import Meal, Ingredient
 class IngredientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ingredient
-        fields=('name',)
+        fields=('id', 'name',)
 
 class MealSerializer(serializers.ModelSerializer):
     ingredients = IngredientSerializer(many=True)
     class Meta:
         model = Meal
-        fields=('name', 'description', 'ingredients')
+        fields=('id','name', 'description', 'ingredients')
