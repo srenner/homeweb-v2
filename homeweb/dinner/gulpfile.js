@@ -8,4 +8,8 @@ gulp.task('default', function() {
     'node_modules/vue-resource/dist/vue-resource.min.js'
   ]).pipe(gulp.dest('./static/dinner/vendor/vue/'));
 
+  gulp.src([
+    'node_modules/bootstrap/dist/**/*.*'
+  ]).pipe(gulp.dest('./static/dinner/vendor/bootstrap/'));
+
 });
