@@ -12,7 +12,6 @@ class MealViewSet(viewsets.ModelViewSet):
 class IngredientViewSet(viewsets.ModelViewSet):
     queryset = Ingredient.objects.all().order_by('name')
     serializer_class = IngredientSerializer
-
 # Create your views here.
 def index(request):
     return HttpResponse("hello world")
