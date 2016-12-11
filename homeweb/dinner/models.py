@@ -19,3 +19,5 @@ class MealHistory(models.Model):
     meal = models.ForeignKey(Meal)
     date = models.DateField()
     comments = models.CharField(max_length=1000)
+    class Meta:
+        verbose_name_plural = "Meal history"
