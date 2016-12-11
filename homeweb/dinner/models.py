@@ -11,7 +11,7 @@ class Meal(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=1000, blank=True)
     ingredients = models.ManyToManyField(Ingredient)
-    last_ate = models.DateField(null=True)
+    last_ate = models.DateField(null=True, blank=True)
     def __str__(self):
         return self.name
 
