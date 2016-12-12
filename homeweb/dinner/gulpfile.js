@@ -12,4 +12,8 @@ gulp.task('default', function() {
     'node_modules/bootstrap/dist/**/*.*'
   ]).pipe(gulp.dest('./static/dinner/vendor/bootstrap/'));
 
+  gulp.src([
+    'node_modules/jquery/dist/**/*.*'
+  ]).pipe(gulp.dest('./static/dinner/vendor/jquery/'));
+
 });
