@@ -1,0 +1,20 @@
+.meal-box {
+  margin: 15px 0 15px 0;
+  padding: 10px;
+  border-radius: 6px;
+  border: solid 2px #D4F0FF;
+  cursor: pointer;
+}
+.meal-box-header {
+  display: inline-table;
+  font-weight: bold;
+  font-size: 16px;
+}
+.meal-box-body {
+  display: inline-table;
+  margin-left: 25px;
+  font-style: italic;
+}
+.meal-box-ingredients {
+  display: block;
+}

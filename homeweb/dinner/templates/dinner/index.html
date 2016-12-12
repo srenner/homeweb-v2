@@ -3,15 +3,74 @@
 {% block head %}
 {% load staticfiles %}
 {% endblock %}
-
 {%block header%}
-
 {%endblock%}
 {%block content %}
+{% verbatim %}
+<div id="app">
+  <header>
+    <div class="h1">
+      <span>Dinner</span>
+      <button class="btn btn-primary" v-on:click="togglePlanningMode()">
+        <span v-show="mode === modeEnum.NORMAL">Planning Mode</span>
+        <span v-show="mode === modeEnum.PLANNING">
+          End Planning Mode
+        </span>
+      </button>
+    </div>
+  </header>
 
-<h1>Hello World</h1>
+  <div v-show="mode === modeEnum.PLANNING">
+    <div class="row">
+        <div class="col-sm-6 col-xs-6">
+          <h3>All Meals</h3>
+          <ul class="list-unstyled">
+            <li v-for="(meal, index) in meals">
+              <div class="meal-box" v-on:click="toggleMealSelected(meal, index)">
+                <div class="meal-box-header">
+                  {{meal.name}}
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-xs-6">
+          <h3>Planned Meals</h3>
+          <ul class="list-unstyled">
+            <li v-for="meal in selectedMeals">
+              <div class="meal-box">
+                <div class="meal-box-header">
+                  {{meal.name}}
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+    </div>
+  </div>
+
+  <div v-show="mode === modeEnum.NORMAL">
+    <ul class="list-unstyled">
+      <li v-for="meal in meals">
+        <div class="meal-box">
+          <div class="meal-box-header">
+            {{meal.name}}
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="hidden">
+    {{meals}}
+    <hr>
+    {{selectedMeals}}
+  </div>
+</div>
+{% endverbatim %}
 
 {% endblock %}
 {% block scripts %}
-
+<script src="{% static 'dinner/js/http.js' %}" type="text/javascript"></script>
+<script src="{% static 'dinner/js/index.js' %}" type="text/javascript"></script>
 {% endblock %}
