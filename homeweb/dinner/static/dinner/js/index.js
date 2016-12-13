@@ -1,4 +1,4 @@
-var app = new Vue({
+var vm = new Vue({
   el: '#app',
   data: {
     modeEnum: {
@@ -24,35 +24,41 @@ var app = new Vue({
   },
   methods: {
     setMode: function(mode) {
-      app.mode = mode;
+      vm.mode = mode;
     },
     togglePlanningMode: function() {
-      if(app.mode === app.modeEnum.PLANNING) {
-        app.mode = app.modeEnum.NORMAL;
+      if(vm.mode === vm.modeEnum.PLANNING) {
+        vm.mode = vm.modeEnum.NORMAL;
       }
       else {
-        app.mode = app.modeEnum.PLANNING;
-        for(var i = 0; i < app.meals.length; i++) {
-          app.meals[i].selected = false;
+        vm.mode = vm.modeEnum.PLANNING;
+        for(var i = 0; i < vm.meals.length; i++) {
+          vm.meals[i].selected = false;
           //todo this feels hacky:
-          Vue.set(app.meals, i, app.meals[i]);
+          Vue.set(vm.meals, i, vm.meals[i]);
         }
       }
     },
     toggleMealSelected: function(meal, index) {
       if(!meal.selected) {
         meal.selected = true;
-        Vue.set(app.meals, index, meal);
+        Vue.set(vm.meals, index, meal);
       }
       else {
         meal.selected = false;
       }
-      Vue.set(app.meals, index, meal);
+      Vue.set(vm.meals, index, meal);
     },
     getMeals: function() {
       dinner_http.getMeals(getMeals_success, getMeals_failed);
       function getMeals_success(response) {
-        app.meals = response.data;
+        vm.meals = response.data;
+        //todo can this be done server-side?
+        vm.meals.forEach(function(meal) {
+          meal.ingredients.forEach(function(ingredient) {
+            ingredient.meal_name = meal.name;
+          });
+        });
       }
       function getMeals_failed(error) {
         console.log(error);
@@ -61,7 +67,7 @@ var app = new Vue({
     getIngredients: function() {
       dinner_http.getIngredients(getIngredients_success, getIngredients_failed);
       function getIngredients_success(response) {
-        app.ingredients = response.data;
+        vm.ingredients = response.data;
       }
       function getIngredients_failed(error) {
         console.log(error);
@@ -70,6 +76,6 @@ var app = new Vue({
   }
 });
 
-app.setMode(app.modeEnum.NORMAL);
-app.getIngredients();
-app.getMeals();
+vm.setMode(vm.modeEnum.NORMAL);
+vm.getIngredients();
+vm.getMeals();

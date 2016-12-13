@@ -5,6 +5,9 @@
   border: solid 2px #D4F0FF;
   cursor: pointer;
 }
+.meal-box.selected {
+  background-color: #D4F0FF;
+}
 .meal-box-header {
   display: inline-table;
   font-weight: bold;
@@ -17,4 +20,5 @@
 }
 .meal-box-ingredients {
   display: block;
+  margin-left: 15px;
 }

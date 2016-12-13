@@ -26,7 +26,7 @@
           <h3>All Meals</h3>
           <ul class="list-unstyled">
             <li v-for="(meal, index) in meals">
-              <div class="meal-box" v-on:click="toggleMealSelected(meal, index)">
+              <div class="meal-box"  v-bind:class="{selected: meal.selected}" v-on:click="toggleMealSelected(meal, index)">
                 <div class="meal-box-header">
                   {{meal.name}}
                 </div>
@@ -42,9 +42,27 @@
                 <div class="meal-box-header">
                   {{meal.name}}
                 </div>
+                <div class="meal-box-ingredients">
+                  <ul class="list-unstyled">
+                    <li v-for="(ingredient, index) in meal.ingredients">
+                      <div>
+                        <div class="checkbox">
+                          <label>
+                              <input type="checkbox">
+                              {{ingredient.name}}
+                          </label>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+
+                </div>
               </div>
             </li>
           </ul>
+          <button class="btn btn-primary">
+            <span>Add Selected Ingredients to Shopping List</span>
+          </button>
         </div>
     </div>
   </div>

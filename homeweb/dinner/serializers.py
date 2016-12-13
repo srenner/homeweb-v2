@@ -2,9 +2,11 @@ from rest_framework import serializers
 from dinner.models import Meal, Ingredient
 
 class IngredientSerializer(serializers.ModelSerializer):
+    #meal = serializers.RelatedField(source='meal.name', read_only=True)
+    #meal_name = serializers.CharField(read_only=True, source="meal.name")
     class Meta:
         model = Ingredient
-        fields='__all__'
+        fields=('id', 'name')
 
 class MealSerializer(serializers.ModelSerializer):
     ingredients = IngredientSerializer(many=True, required=False, read_only=True)
