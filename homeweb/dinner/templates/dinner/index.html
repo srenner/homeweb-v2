@@ -22,7 +22,7 @@
 
   <div v-show="mode === modeEnum.PLANNING">
     <div class="row">
-        <div class="col-sm-6 col-xs-6">
+        <div class="col-md-4 col-sm-6 col-xs-6">
           <h3>All Meals</h3>
           <ul class="list-unstyled">
             <li v-for="(meal, index) in meals">
@@ -34,11 +34,11 @@
             </li>
           </ul>
         </div>
-        <div class="col-sm-6 col-xs-6">
+        <div class="col-md-4 col-sm-6 col-xs-6">
           <h3>Planned Meals</h3>
-          <button class="btn btn-primary" v-if="selectedMeals.length > 0">
-            <span>Add Selected Ingredients to Shopping List</span>
-          </button>
+          <div v-if="selectedMeals.length === 0">
+            <span style="font-style: italic">Click a meal on the left to add it to the weekly plan</span>
+          </div>
           <ul class="list-unstyled">
             <li v-for="meal in selectedMeals">
               <div class="meal-box">
@@ -51,18 +51,27 @@
                       <div>
                         <div class="checkbox">
                           <label>
-                              <input type="checkbox">
+                              <input type="checkbox" v-on:click="toggleShoppingList(ingredient)">
                               {{ingredient.name}}
                           </label>
                         </div>
                       </div>
                     </li>
                   </ul>
-
                 </div>
               </div>
             </li>
           </ul>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-6">
+          <h3>Shopping List</h3>
+          <div v-if="shoppingList.length === 0">
+            <span style="font-style: italic">Select ingredients from planned meals to add to shopping list</span>
+          </div>
+          <ul>
+            <li v-for="item in shoppingList">
+              <span>{{item.name}} ({{item.meal_name}})</span>
+            </li>
         </div>
     </div>
   </div>
@@ -77,12 +86,6 @@
         </div>
       </li>
     </ul>
-  </div>
-
-  <div class="hidden">
-    {{meals}}
-    <hr>
-    {{selectedMeals}}
   </div>
 </div>
 {% endverbatim %}
