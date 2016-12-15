@@ -68,10 +68,16 @@
           <div v-if="shoppingList.length === 0">
             <span style="font-style: italic">Select ingredients from planned meals to add to shopping list</span>
           </div>
-          <ul>
+          <ul class="list-unstyled" v-sortable="{ handle: '.glyphicon-sort' }">
             <li v-for="item in shoppingList">
-              <span>{{item.name}} ({{item.meal_name}})</span>
+              <div class="shopping-item-box">
+                <span class="touch-target">
+                  <span class="glyphicon glyphicon-sort" style="cursor: pointer"></span>
+                </span>
+                <span>{{item.name}} ({{item.meal_name}})</span>
+              </div>
             </li>
+          </ul>
         </div>
     </div>
   </div>

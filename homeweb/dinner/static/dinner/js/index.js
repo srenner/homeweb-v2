@@ -66,6 +66,9 @@ var vm = new Vue({
         vm.shoppingList.push(ingredient);
       }
     },
+    sortShoppingList: function(event) {
+      alert("sort");
+    },
     removeFromShoppingList: function(ingredients) {
       for(var i = 0; i < ingredients.length; i++) {
         var ingredient = ingredients[i];
