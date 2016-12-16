@@ -67,7 +67,23 @@ var vm = new Vue({
       }
     },
     sortShoppingList: function(event) {
-      alert("sort");
+
+      //todo room for improvement
+      //some potential solutions may reveal vue.js oddities
+      
+      var original = vm.shoppingList[event.oldIndex];
+      vm.shoppingList.splice(vm.newIndex, 0, original);
+      if(event.newIndex < event.oldIndex) {
+        //moved up
+        vm.shoppingList.splice(vm.oldIndex + 1, 1);
+      }
+      else {
+        //moved down
+        vm.shoppingList.splice(vm.oldIndex, 1);
+      }
+
+
+
     },
     removeFromShoppingList: function(ingredients) {
       for(var i = 0; i < ingredients.length; i++) {
