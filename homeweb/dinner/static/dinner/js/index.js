@@ -109,6 +109,6 @@ var vm = new Vue({
   }
 });
 
-vm.setMode(vm.modeEnum.NORMAL);
+vm.setMode(vm.modeEnum.PLANNING);
 vm.getIngredients();
 vm.getMeals();
