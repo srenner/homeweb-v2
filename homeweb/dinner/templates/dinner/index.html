@@ -74,11 +74,24 @@
                 <span class="touch-target">
                   <span class="glyphicon glyphicon-sort" style="cursor: pointer"></span>
                 </span>
-                <span>{{item.name}} ({{item.meal_name}})</span>
+                <span>{{item.name}}
+                  <span v-show="item.meal_name !== undefined">
+                    ({{item.meal_name}})
+                  </span>
+                </span>
               </div>
             </li>
           </ul>
-        
+          
+          <form novalidate onsubmit="return false">
+            <div class="input-group">
+              <input type="text" class="form-control" v-model="orphanIngredient" />
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-info" v-on:click="addOrphanIngredient(orphanIngredient)">Add</button>
+              </span>
+            </div>
+          </form>
+
           <!--UNHIDE THIS WHEN TROUBLESHOOTING SORT-->
           <ul class="hidden">
             <li v-for="item in shoppingList">

@@ -8,7 +8,8 @@ var vm = new Vue({
     mode: '',
     meals: [],
     ingredients: [],
-    shoppingList: []
+    shoppingList: [],
+    orphanIngredient: ''
   },
   computed: {
     selectedMeals: function() {
@@ -97,6 +98,9 @@ var vm = new Vue({
           }
         }
       }
+    },
+    addOrphanIngredient: function(name) {
+      vm.shoppingList.push({name: name});
     },
     getMeals: function() {
       dinner_http.getMeals(getMeals_success, getMeals_failed);
