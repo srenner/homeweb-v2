@@ -66,7 +66,7 @@
         <div class="col-md-4 col-sm-6 col-xs-6">
           <h3>Shopping List</h3>
           <div v-if="shoppingList.length === 0">
-            <span style="font-style: italic">Select ingredients from planned meals to add to shopping list</span>
+            <span style="font-style: italic">Select ingredients from planned meals to add to shopping list, or add an ingredient in the textbox below.</span>
           </div>
           <ul class="list-unstyled" v-sortable="{ handle: '.glyphicon-sort', onUpdate: sortShoppingList }">
             <li v-for="item in shoppingList">
@@ -79,12 +79,30 @@
                     ({{item.meal_name}})
                   </span>
                 </span>
+
                 <div class="pull-right">
+                  <button class="btn btn-xs btn-default" v-on:click="showNoteField(item)">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                  </button>
                   <button class="btn btn-xs btn-default" v-on:click="toggleShoppingList(item)">
                     <span class="glyphicon glyphicon-trash text-danger"></span>
                   </button>
                 </div>
-
+                <div class="ingredient-notes small" style="font-style: italic" v-if="!item.showNoteField && item.note.length > 0">
+                  {{item.note}}
+                </div>
+                <form novalidate onsubmit="return false">
+                  <div class="ingredient-notes small" v-if="item.showNoteField">
+                    <div class="input-group">
+                      <input type="text" class="form-control input-sm" v-model="item.note" >
+                      <div class="input-group-btn">
+                        <button class="btn btn-sm btn-default" v-on:click="saveIngredientNote(item)">
+                          <span class="glyphicon glyphicon-floppy-disk"></span>
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                </form>
               </div>
             </li>
           </ul>
@@ -92,11 +110,14 @@
           <form novalidate onsubmit="return false">
             <div class="input-group">
               <input type="text" class="form-control" v-model="orphanIngredient" />
-              <span class="input-group-btn">
+              <div class="input-group-btn">
                 <button type="submit" class="btn btn-info" v-on:click="addOrphanIngredient(orphanIngredient)">Add</button>
-              </span>
+              </div>
             </div>
           </form>
+
+            
+
 
           <!--UNHIDE THIS WHEN TROUBLESHOOTING SORT-->
           <ul class="hidden">

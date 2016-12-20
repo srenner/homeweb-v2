@@ -101,18 +101,35 @@ var vm = new Vue({
       }
     },
     addOrphanIngredient: function(name) {
-      vm.shoppingList.push({name: name});
+      if(vm.orphanIngredient.length > 0) {
+        vm.shoppingList.push({name: name, showNoteField: false, note: ''});
+      }
+      vm.orphanIngredient = '';
+    },
+    showNoteField(item) {
+      item.showNoteField = true;
+    },
+    saveIngredientNote(item) {
+      item.showNoteField = false;
+    },
+    addShoppingItemNote: function(item) {
+
     },
     getMeals: function() {
       dinner_http.getMeals(getMeals_success, getMeals_failed);
       function getMeals_success(response) {
-        vm.meals = response.data;
-        //todo can this be done server-side?
-        vm.meals.forEach(function(meal) {
-          meal.ingredients.forEach(function(ingredient) {
+        var meals = response.data;
+        for(var i = 0; i < meals.length; i++) {
+          var meal = meals[i];
+          for(var j = 0; j < meal.ingredients.length; j++) {
+            var ingredient = meal.ingredients[j];
             ingredient.meal_name = meal.name;
-          });
-        });
+            ingredient.note = '';
+            ingredient.showNoteField = false;
+            //Vue.set(meal.ingredients, j, ingredient);
+          }
+        }
+        vm.meals = meals;
       }
       function getMeals_failed(error) {
         console.log(error);
@@ -131,5 +148,5 @@ var vm = new Vue({
 });
 
 vm.setMode(vm.modeEnum.PLANNING);
-vm.getIngredients();
+//vm.getIngredients();
 vm.getMeals();
