@@ -51,7 +51,7 @@
                       <div>
                         <div class="checkbox">
                           <label>
-                              <input type="checkbox" v-on:click="toggleShoppingList(ingredient)">
+                              <input type="checkbox" v-model="ingredient.selected" v-on:click="toggleShoppingList(ingredient)">
                               {{ingredient.name}}
                           </label>
                         </div>
@@ -79,6 +79,12 @@
                     ({{item.meal_name}})
                   </span>
                 </span>
+                <div class="pull-right">
+                  <button class="btn btn-xs btn-default" v-on:click="toggleShoppingList(item)">
+                    <span class="glyphicon glyphicon-trash text-danger"></span>
+                  </button>
+                </div>
+
               </div>
             </li>
           </ul>

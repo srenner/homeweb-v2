@@ -59,6 +59,7 @@ var vm = new Vue({
         //todo maybe get meal_ingredient_id from server for the if-statement
         if(shoppingItem.id === ingredient.id
             && shoppingItem.meal_name === ingredient.meal_name) {
+          ingredient.selected = false;
           vm.shoppingList.splice(i,1);
           alreadyExists = true;
         }
