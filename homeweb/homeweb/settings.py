@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'rest_framework',
+    'landing.apps.LandingConfig',
     'dinner.apps.DinnerConfig',
     'django.contrib.admin',
     'django.contrib.auth',

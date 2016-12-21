@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Homeweb</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'landing/vendor/purecss/base.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'landing/vendor/purecss/buttons.css' %}" />
+</head>
+<body style="margin: 15px">
+    <header>
+        <h1>Homeweb</h1>
+    </header>
+    <p>
+        Select an app below
+    </p>
+    <a class="pure-button" href="/admin/">Admin</a>
+    <a class="pure-button" href="/dinner/">Dinner</a>
+    <a class="pure-button" hidden href="/dinner/">BillMinder</a>
+</body>
+</html>
