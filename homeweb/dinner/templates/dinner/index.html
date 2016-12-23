@@ -94,7 +94,7 @@
                 <form novalidate onsubmit="return false">
                   <div class="ingredient-notes small" v-if="item.showNoteField">
                     <div class="input-group">
-                      <input type="text" class="form-control input-sm" v-model="item.note" >
+                      <input type="text" v-focus class="form-control input-sm" v-model="item.note" >
                       <div class="input-group-btn">
                         <button class="btn btn-sm btn-default" v-on:click="saveIngredientNote(item)">
                           <span class="glyphicon glyphicon-ok"></span>

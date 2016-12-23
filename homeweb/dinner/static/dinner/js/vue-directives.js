@@ -3,3 +3,9 @@ Vue.directive('sortable', {
     var sortable = new Sortable(el, binding.value || {});
   }
 });
+
+Vue.directive('focus', {
+        inserted: function (el) {
+        el.focus();
+    }
+});
