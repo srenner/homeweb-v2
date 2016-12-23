@@ -48,6 +48,9 @@ var vm = new Vue({
       }
       else {
         meal.selected = false;
+        for(var i = 0; i < meal.ingredients.length; i++) {
+          meal.ingredients[i].selected = false;
+        }
         vm.removeFromShoppingList(meal.ingredients);
       }
       Vue.set(vm.meals, index, meal);
