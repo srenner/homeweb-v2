@@ -21,6 +21,8 @@ var vm = new Vue({
   methods: {
     editMeal: function(meal) {
       console.log("starting to edit " + meal.name);
+      $('#editMeal').modal();
+
     },
     toggleMealSelected: function(meal, index) {
       if(!meal.selected) {
