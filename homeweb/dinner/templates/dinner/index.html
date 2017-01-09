@@ -11,12 +11,12 @@
   <header class="no-print">
     <div class="h1">
       <span>Dinner</span>
-      <button class="btn btn-default btn-sm" v-on:click="togglePlanningMode()">
+      <!--<button class="btn btn-default btn-sm" v-on:click="togglePlanningMode()">
         <span v-show="mode === modeEnum.NORMAL">Planning Mode</span>
         <span v-show="mode === modeEnum.PLANNING">
           Meal Editor Mode
         </span>
-      </button>
+      </button>-->
     </div>
   </header>
 
@@ -26,11 +26,23 @@
           <h3>All Meals</h3>
           <ul class="list-unstyled">
             <li v-for="(meal, index) in meals">
-              <div class="meal-box"  v-bind:class="{selected: meal.selected}" v-on:click="toggleMealSelected(meal, index)">
-                <div class="meal-box-header">
-                  {{meal.name}}
+              <div class="meal-box" v-on:click="toggleMealSelected(meal, index)" v-bind:class="{selected: meal.selected}">
+
+                <div class="meal-box-body">
+                  <div class="meal-box-header" >
+                    {{meal.name}}
+                  </div>
+                  <div class="meal-box-right">
+                    <button class="btn btn-xs btn-default" v-on:click.stop="editMeal(meal)">
+                      <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                  </div>
                 </div>
+
+
+                
               </div>
+
             </li>
           </ul>
         </div>
@@ -133,7 +145,7 @@
     </div>
   </div>
 
-  <div v-show="mode === modeEnum.NORMAL">
+  <!--<div v-show="mode === modeEnum.NORMAL">
     <ul class="list-unstyled">
       <li v-for="meal in meals">
         <div class="meal-box">
@@ -143,7 +155,7 @@
         </div>
       </li>
     </ul>
-  </div>
+  </div>-->
 </div>
 {% endverbatim %}
 

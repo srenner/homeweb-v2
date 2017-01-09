@@ -13,7 +13,7 @@ var vm = new Vue({
   },
   computed: {
     selectedMeals: function() {
-      console.log("filtering");
+      //console.log("filtering");
       var filtered = [];
       for(var i = 0; i < this.meals.length; i++) {
         if(this.meals[i].selected) {
@@ -40,6 +40,9 @@ var vm = new Vue({
           Vue.set(vm.meals, i, vm.meals[i]);
         }
       }
+    },
+    editMeal: function(meal) {
+      console.log("starting to edit " + meal.name);
     },
     toggleMealSelected: function(meal, index) {
       if(!meal.selected) {

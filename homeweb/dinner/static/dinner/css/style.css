@@ -14,16 +14,23 @@
 .meal-box.selected {
   background-color: #D4F0FF;
 }
+
+.meal-box-body {
+  display: flex;
+}
+
 .meal-box-header {
-  display: inline-table;
+  display: inline-flex;
   font-weight: bold;
   font-size: 16px;
+  flex: initial;
 }
-.meal-box-body {
-  display: inline-table;
-  margin-left: 25px;
-  font-style: italic;
+
+.meal-box-right {
+  flex: auto;
+  text-align: right;
 }
+
 .meal-box-ingredients {
   display: block;
   margin-left: 15px;
