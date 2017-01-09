@@ -1,11 +1,6 @@
 var vm = new Vue({
   el: '#app',
   data: {
-    modeEnum: {
-      NORMAL: 'normal',
-      PLANNING: 'planning'
-    },
-    mode: '',
     meals: [],
     ingredients: [],
     shoppingList: [],
@@ -24,23 +19,6 @@ var vm = new Vue({
     }
   },
   methods: {
-    setMode: function(mode) {
-      vm.mode = mode;
-    },
-    togglePlanningMode: function() {
-      if(vm.mode === vm.modeEnum.PLANNING) {
-        vm.mode = vm.modeEnum.NORMAL;
-        vm.shoppingList = [];
-      }
-      else {
-        vm.mode = vm.modeEnum.PLANNING;
-        for(var i = 0; i < vm.meals.length; i++) {
-          vm.meals[i].selected = false;
-          //todo this feels hacky:
-          Vue.set(vm.meals, i, vm.meals[i]);
-        }
-      }
-    },
     editMeal: function(meal) {
       console.log("starting to edit " + meal.name);
     },
@@ -152,6 +130,4 @@ var vm = new Vue({
   }
 });
 
-vm.setMode(vm.modeEnum.PLANNING);
-//vm.getIngredients();
 vm.getMeals();
