@@ -2,6 +2,7 @@ var vm = new Vue({
   el: '#app',
   data: {
     meals: [],
+    selectedMeal: {},
     ingredients: [],
     shoppingList: [],
     orphanIngredient: ''
@@ -21,7 +22,9 @@ var vm = new Vue({
   methods: {
     editMeal: function(meal) {
       console.log("starting to edit " + meal.name);
+      vm.selectedMeal = JSON.parse(JSON.stringify(meal));
       $('#editMeal').modal();
+
 
     },
     toggleMealSelected: function(meal, index) {
@@ -133,3 +136,4 @@ var vm = new Vue({
 });
 
 vm.getMeals();
+vm.getIngredients();

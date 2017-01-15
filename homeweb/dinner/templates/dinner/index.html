@@ -133,47 +133,72 @@
     </div>
   </div>
 
+  <div id="editMeal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Edit Meal</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="control-label">Meal Name</label>
+                <input type="text" class="form-control" v-model="selectedMeal.name" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="control-label">Available Ingredients</label>
+                <ul class="list-unstyled">
+                  <li v-for="ingredient in ingredients">
+                    <div class="ingredient-box">
+                      <div class="ingredient-box-text">
+                      {{ingredient.name}}
+                      </div>
+                      <div class="ingredient-box-right">
+                        <button class="btn btn-xs btn-default">
+                          <span class="glyphicon glyphicon-plus text-success"></span>
+                        </button>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="control-label">Ingredients for Meal</label>
+                <ul class="list-unstyled">
+                  <li v-for="ingredient in selectedMeal.ingredients">
+                    <div class="ingredient-box">
+                      <div class="ingredient-box-text">
+                        <button class="btn btn-xs btn-default">
+                          <span class="glyphicon glyphicon-trash text-danger"></span>
+                        </button>
+                      </div>
+                      <div class="ingredient-box-text">
+                        {{ingredient.name}}
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
 </div>
-
-
-<div id="editMeal" class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Edit Meal</h4>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="form-group">
-              <label class="control-label">Meal Name</label>
-              <input type="text" class="form-control" />
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="form-group">
-              <label class="control-label">Ingredients</label>
-              <ul class="list-unstyled">
-                <li>
-                  Salt
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-
 
 
 {% endverbatim %}
