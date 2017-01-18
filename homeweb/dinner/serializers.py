@@ -13,3 +13,8 @@ class MealSerializer(serializers.ModelSerializer):
     class Meta:
         model = Meal
         fields='__all__'
+
+class MealNameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Meal
+        
